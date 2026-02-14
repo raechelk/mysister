@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +28,7 @@ SECRET_KEY = 'django-insecure-h4j9%2kfzwz)3vb9a7j_01vg+9umulh^pz-(luff*k5!%yma'
 DEBUG = False
 
 ALLOWED_HOSTS = ['.onrender.com','localhost','127.0.0.1']
-INSTALLED_APPS = [
-    'django.contrib.admin',
-]
+
 
 
 # Application definition
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sister',
+
 ]
 
 MIDDLEWARE = [
@@ -122,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'sister/static']
+STATIC_ROOT = BASE_DIR / 'sister/static'
+
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
