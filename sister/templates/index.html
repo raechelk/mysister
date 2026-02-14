@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>For My Sister 💕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: rebeccapurple ;(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            color: white;
+        }
+        .hearts {
+            position: fixed;
+            font-size: 20px;
+            animation: floatUp 2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        h1 {
+            margin-top: 15vh;
+            font-size: 38px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: white;
+            color: #ff4d6d;
+            position: absolute;
+        }
+
+        #resultMessage {
+            font-size: 28px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            animation: floatUp 2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body onclick="playMusicOnce()">
+<div class="hearts"></div>
+
+    <h1>For My Beautiful Sister 💖</h1>
+
+
+    <p>
+        You are my first best friend, my secret keeper,
+        and my forever partner in crime.
+        I love you so much 💕
+    </p>
+
+    <h3>Was I a good sister? 😌</h3>
+
+    <button id="yesBtn" onclick="sayYes()">Yes 💕</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+<div class="heart"></div>
+    <div id="resultMessage">
+        💖 I KNEW I AM A GOOD SISTER! 💖
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="{% static 'music/sister.mp3' %}" type="audio/mpeg">
+    </audio>
+
+<script>
+
+    // Play music only once
+    let musicPlayed = false;
+    function playMusicOnce() {
+        if (!musicPlayed) {
+            document.getElementById("bgMusic").play();
+            musicPlayed = true;
+        }
+    }
+
+    // Move NO button randomly
+    function moveNo() {
+        let btn = document.getElementById("noBtn");
+        let x = Math.random() * (window.innerWidth - 100);
+        let y = Math.random() * (window.innerHeight - 50);
+
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
+    }
+
+    // When YES is clicked
+    function sayYes() {
+
+        document.getElementById("resultMessage").style.display = "block";
+
+        // Create heart explosion
+        for (let i = 0; i < 30; i++) {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💖";
+
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+    }
+
+</script>
+
+</body>
+</html>
